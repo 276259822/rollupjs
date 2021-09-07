@@ -1,3 +1,8 @@
+/*!
+ * rollup.js v1.0.0
+ * (c) 2021-2021 
+ * Released under the MIT License.
+ */
 var helloworld = (function () {
     'use strict';
 
@@ -170,4 +175,3 @@ var helloworld = (function () {
     return index;
 
 }());
-//# sourceMappingURL=index.js.map
