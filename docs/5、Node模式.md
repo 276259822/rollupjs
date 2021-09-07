@@ -9,7 +9,7 @@
 
 1. 基本配置信息 [`../build/rollup.config.js`](../build/rollup.config.js)
 
-```
+```javascript
 const path = require("path");
 const { babel } = require("@rollup/plugin-babel");
 const typescript = require("@rollup/plugin-typescript");
@@ -46,7 +46,7 @@ module.exports = {
 
 2. Node 调用 rollup 编译执行 [`../build/build.js`](../build/build.js)
 
-```
+```javascript
 const fs = require("fs");
 const path = require("path");
 const zlib = require("zlib");
@@ -124,7 +124,7 @@ build();
 
 3. `package.json` 配置编译命令
 
-```
+```json
 {
   "scripts": {
     "dev": "rollup -c ./build/rollup.config.dev.js",

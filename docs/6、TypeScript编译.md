@@ -16,7 +16,7 @@ npm i --save-dev @rollup/plugin-typescript typescript tslib
 
 1. 配置文件路径 [`../build/rollup.config.js`](../build/rollup.config.js)
 
-```
+```javascript
 const path = require("path");
 const { babel } = require("@rollup/plugin-babel");
 const typescript = require("@rollup/plugin-typescript");
@@ -46,7 +46,7 @@ module.exports = {
 
 1. 源码内容 `../src/index.js`
 
-```
+```javascript
 export default async function (n: number) {
   while (--n) {
     await delay(10, n);
@@ -69,7 +69,7 @@ function delay(interval: number, num: number) {
 2. 编译结果在`../dist/`目录下
 3. 示例源码
 
-```
+```html
 <!DOCTYPE html>
 <html lang="en">
   <head>
