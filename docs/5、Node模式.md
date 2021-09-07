@@ -18,13 +18,14 @@ const resolveFile = function (filePath) {
 };
 
 module.exports = {
-  input: resolveFile("src/index.js"),
+  input: resolveFile("src/index.s"),
   output: {
     file: resolveFile("dist/index.js"),
     format: "umd",
   },
   plugins: [
     babel({
+      babelHelpers: "bundled",
       presets: ["@babel/preset-env"],
     }),
   ],
@@ -64,7 +65,7 @@ build();
 {
   "scripts": {
     "dev": "rollup -c ./build/rollup.config.dev.js",
-    "prd": "rollup -c ./build/rollup.config.prod.js",
+    "prod": "rollup -c ./build/rollup.config.prod.js",
     "build": "node ./build/build.js"
   }
 }
