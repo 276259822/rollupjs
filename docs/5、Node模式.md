@@ -132,7 +132,7 @@ build();
 ```json
 {
   "scripts": {
-    "dev": "rollup -c ./build/rollup.config.dev.js",
+    "dev": "rollup -w -c ./build/rollup.config.dev.js",
     "prod": "rollup -c ./build/rollup.config.prod.js",
     "build": "node ./build/build.js"
   }
