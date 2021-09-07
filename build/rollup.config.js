@@ -1,15 +1,19 @@
 const path = require("path");
-const buble = require("@rollup/plugin-buble");
+const { babel } = require("@rollup/plugin-babel");
 
-const resolve = function (filePath) {
+const resolveFile = function (filePath) {
   return path.join(__dirname, "..", filePath);
 };
 
 module.exports = {
-  input: resolve("src/index.js"),
+  input: resolveFile("src/index.js"),
   output: {
-    file: resolve("dist/index.js"),
-    format: "iife",
+    file: resolveFile("dist/index.js"),
+    format: "umd",
   },
-  plugins: [buble()],
+  plugins: [
+    babel({
+      presets: ["@babel/preset-env"],
+    }),
+  ],
 };
