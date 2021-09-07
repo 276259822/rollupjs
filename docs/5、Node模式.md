@@ -20,7 +20,6 @@ npm i --save-dev terser
 ```javascript
 const path = require("path");
 const { babel } = require("@rollup/plugin-babel");
-const typescript = require("@rollup/plugin-typescript");
 const pkg = require("../package.json");
 
 const resolveFile = function (filePath) {
@@ -47,7 +46,6 @@ module.exports = {
       babelHelpers: "bundled",
       presets: ["@babel/preset-env"],
     }),
-    typescript({ lib: ["es5", "es6", "dom"], target: "es5" }),
   ],
 };
 ```
