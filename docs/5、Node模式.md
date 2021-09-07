@@ -8,8 +8,10 @@
 ### 安装依赖
 
 ```
-npm i --save-dev zlib terser
+npm i --save-dev terser
 ```
+
+- terser 代码压缩工具
 
 ### rollup 配置
 
@@ -104,25 +106,24 @@ async function build() {
   console.log(`[INFO] 开始编译 ${inputOptions.input}`);
 
   // generate code and a sourcemap
-  await bundle.generate(outputOptions).then(({ output: [{ code }] }) => {
+  await bundle.generate(outputOptions).then(async ({ output: [{ code }] }) => {
+    const result = await terser.minify(code, {
+      toplevel: true,
+      output: {
+        ascii_only: true,
+      },
+      compress: {
+        pure_funcs: ["makeMap"],
+      },
+    });
     const minified =
-      (outputOptions.banner ? outputOptions.banner + "\n" : "") +
-      terser.minify(code, {
-        toplevel: true,
-        output: {
-          ascii_only: true,
-        },
-        compress: {
-          pure_funcs: ["makeMap"],
-        },
-      }).code;
+      (outputOptions.banner ? outputOptions.banner + "\n" : "") + result.code;
     return write(outputOptions.file, minified, true);
   });
 
   console.log(`[SUCCESS] 编译结束 ${outputOptions.file}`);
 
-  // or write the bundle to disk
-  await bundle.write(outputOptions);
+  await bundle.close();
 }
 
 build();
