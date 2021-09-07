@@ -5,6 +5,12 @@
     └── build.js # 执行编译的Node.js脚本
 ```
 
+### 安装依赖
+
+```
+npm i --save-dev zlib terser
+```
+
 ### rollup 配置
 
 1. 基本配置信息 [`../build/rollup.config.js`](../build/rollup.config.js)
